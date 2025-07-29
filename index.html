@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Početna stranica - Oglasi i Promocija Događaja</title>
+    <!-- Tailwind CSS-a -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Svetlo siva pozadina */
+        }
+        .hero-section {
+            background: linear-gradient(to right, #6366f1, #8b5cf6); /* Ljubičasti gradijent */
+            color: white;
+            padding: 8rem 0;
+            text-align: center;
+        }
+        .category-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-radius: 0.75rem; /* Zaobljenije ivice */
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #6366f1; /* Indigo boja */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #4f46e5; /* Tamnija indigo */
+        }
+        .input-field {
+            border: 1px solid #d1d5db; /* Svetlo siva ivica */
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigacija -->
+    <nav class="bg-white shadow-md p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Organizuj.rs</a>
+            <div class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-900">Početna</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Kategorije</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Postavi Oglas</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Kontakt</a>
+                <a href="#" class="btn-primary">Prijava / Registracija</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Sekcija sa Pretragom -->
+    <header class="hero-section">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-extrabold mb-4 leading-tight">Pronađite savršene usluge za vaše slavlje</h1>
+            <p class="text-xl mb-8 opacity-90">Ketering, rođendanionice, muzika, fotografi i još mnogo toga za nezaboravne događaje, sve na jednom mestu.</p>
+            <div class="max-w-3xl mx-auto bg-white p-2 rounded-lg shadow-lg flex items-center space-x-2">
+                <input type="text" placeholder="Pretražite usluge..." class="input-field flex-grow text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <button class="btn-primary px-6 py-3">Pretraži</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sekcija "Pregledaj Kategorije" -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Pregledaj Kategorije</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Muzički Izvođači -->
+                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Muzički Izvođači</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>Bendovi</li>
+                        <li>DJ-evi</li>
+                        <li>Muzičari za venčanja</li>
+                        <li>i više...</li>
+                    </ul>
+                </div>
+                <!-- Zabavljači -->
+                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Zabavljači</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>Dečiji animatori</li>
+                        <li>Komičari</li>
+                        <li>Plesači</li>
+                        <li>Mađioničari</li>
+                        <li>i više...</li>
+                    </ul>
+                </div>
+                <!-- Usluge za Događaje -->
+                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Usluge za Događaje</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>Fotografi</li>
+                        <li>Iznajmljivanje opreme</li>
+                        <li>Usluge za venčanja</li>
+                        <li>Dekorateri</li>
+                        <li>Organizatori događaja</li>
+                        <li>i više...</li>
+                    </ul>
+                </div>
+                <!-- Rođendanionice i Prostori -->
+                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Rođendanionice i Prostori</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>Prostori za proslave</li>
+                        <li>Dečije igraonice</li>
+                        <li>Sale za venčanja</li>
+                        <li>Restorani za događaje</li>
+                        <li>i više...</li>
+                    </ul>
+                </div>
+                <!-- Hrana i Piće -->
+                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Hrana i Piće</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>Usluge keteringa</li>
+                        <li>Torte i kolači</li>
+                        <li>Pekari i poslastičari</li>
+                        <li>i više...</li>
+                    </ul>
+                </div>
+                <!-- Ostale Usluge -->
+                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Ostale Usluge</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>Video snimatelji</li>
+                        <li>Šminkeri i frizeri</li>
+                        <li>Cvećari</li>
+                        <li>Prevoz za događaje</li>
+                        <li>Obezbeđenje</li>
+                        <li>i više...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcija "Kako Funkcioniše" ili "Istaknute Usluge" -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-12">Kako Funkcioniše</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 bg-white rounded-xl shadow-md border border-gray-200">
+                    <div class="text-5xl text-indigo-500 mb-4">🔍</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1. Pretražite</h3>
+                    <p class="text-gray-600">Pronađite usluge koje su vam potrebne koristeći našu pretragu ili kategorije.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md border border-gray-200">
+                    <div class="text-5xl text-indigo-500 mb-4">✉️</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">2. Kontaktirajte</h3>
+                    <p class="text-gray-600">Pošaljite upit direktno pružaocima usluga i dobijte ponude.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-md border border-gray-200">
+                    <div class="text-5xl text-indigo-500 mb-4">🎉</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">3. Proslavite</h3>
+                    <p class="text-gray-600">Uživajte u savršeno organizovanom događaju bez stresa!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Organizuj.rs. Sva prava zadržana.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white">Politika Privatnosti</a>
+                <a href="#" class="text-gray-400 hover:text-white">Uslovi Korišćenja</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
