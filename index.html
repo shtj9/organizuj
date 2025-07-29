@@ -51,13 +51,31 @@
     <nav class="bg-white shadow-md p-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-gray-800">Organizuj.rs</a>
-            <div class="space-x-4">
+
+            <!-- Hamburger meni za male ekrane -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop navigacioni linkovi (vidljivi na srednjim i većim ekranima) -->
+            <div class="hidden md:flex space-x-4 items-center">
                 <a href="#" class="text-gray-600 hover:text-gray-900">Početna</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900">Kategorije</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900">Postavi Oglas</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900">Kontakt</a>
                 <a href="#" class="btn-primary">Prijava / Registracija</a>
             </div>
+        </div>
+
+        <!-- Mobilni meni (skriven po defaultu, prikazuje se klikom na hamburger) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 px-2 pb-3">
+            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Početna</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Kategorije</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Postavi Oglas</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Kontakt</a>
+            <a href="#" class="block btn-primary text-center p-2 rounded-md">Prijava / Registracija</a>
         </div>
     </nav>
 
@@ -148,7 +166,7 @@
         </div>
     </section>
 
-    <!-- Sekcija "Kako Funkcioniše" ili "Istaknute Usluge" -->
+    <!-- Sekcija "Kako Funkcioniše" -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold text-gray-800 mb-12">Kako Funkcioniše</h2>
@@ -182,6 +200,19 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Dodaje event listener za klik na hamburger dugme
+            mobileMenuButton.addEventListener('click', function() {
+                // Prebacuje 'hidden' klasu na mobilnom meniju
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
 
 </body>
 </html>
