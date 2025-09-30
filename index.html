@@ -3,216 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Početna stranica - Oglasi i Promocija Događaja</title>
-    <!-- Tailwind CSS-a -->
+    <title>grape.rs | Oglasi za Proslave i Veselja u Srbiji</title>
+    <!-- Učitavanje Tailwind CSS-a -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'grape-primary': '#581C87', // Duboka boja grožđa/ljubičasta
+                        'grape-light': '#8B5CF6',
+                        'grape-accent': '#FDE047', // Žuta/Zlatna za akcenat
+                        'grape-bg': '#F9FAFB', // Svetla pozadina
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        /* Osnovni stil za 'Inter' font */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Svetlo siva pozadina */
-        }
-        .hero-section {
-            background: linear-gradient(to right, #6366f1, #8b5cf6); /* Ljubičasti gradijent */
-            color: white;
-            padding: 8rem 0;
-            text-align: center;
-        }
-        .category-card {
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            border-radius: 0.75rem; /* Zaobljenije ivice */
-        }
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary {
-            background-color: #6366f1; /* Indigo boja */
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.2s ease-in-out;
-        }
-        .btn-primary:hover {
-            background-color: #4f46e5; /* Tamnija indigo */
-        }
-        .input-field {
-            border: 1px solid #d1d5db; /* Svetlo siva ivica */
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            width: 100%;
+            background-color: #F9FAFB;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen antialiased">
 
-    <!-- Navigacija -->
-    <nav class="bg-white shadow-md p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Organizuj.rs</a>
+    <!-- Navigacija (Header) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <svg class="w-8 h-8 text-grape-primary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14a6 6 0 100-12 6 6 0 000 12zM9 9a1 1 0 00-1 1v3a1 1 0 002 0v-3a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    <!-- PROMENA: Grape.rs promenjeno u grape.rs -->
+                    <span class="text-2xl font-extrabold text-grape-primary tracking-tight">grape.rs</span>
+                </a>
+                
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-grape-primary transition duration-150 ease-in-out font-medium">Početna</a>
+                    <a href="#" class="text-gray-600 hover:text-grape-primary transition duration-150 ease-in-out font-medium">Usluge</a>
+                    <a href="#" class="text-gray-600 hover:text-grape-primary transition duration-150 ease-in-out font-medium">Kako Radi</a>
+                </nav>
 
-            <!-- Hamburger meni za male ekrane -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+                <!-- CTA Dugmad -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="px-4 py-2 text-sm font-semibold text-grape-primary bg-transparent border border-grape-primary rounded-lg hover:bg-grape-primary hover:text-white transition duration-200">
+                        Prijavi se
+                    </button>
+                    <button class="px-4 py-2 text-sm font-semibold text-white bg-grape-light rounded-lg shadow-lg hover:bg-grape-primary transition duration-200">
+                        Postavi Oglas
+                    </button>
+                </div>
 
-            <!-- Desktop navigacioni linkovi (vidljivi na srednjim i većim ekranima) -->
-            <div class="hidden md:flex space-x-4 items-center">
-                <a href="#" class="text-gray-600 hover:text-gray-900">Početna</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">Kategorije</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">Postavi Oglas</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">Kontakt</a>
-                <a href="#" class="btn-primary">Prijava / Registracija</a>
+                <!-- Mobilni Meni Dugme -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-500 hover:text-grape-primary focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
         </div>
 
-        <!-- Mobilni meni (skriven po defaultu, prikazuje se klikom na hamburger) -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 px-2 pb-3">
-            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Početna</a>
-            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Kategorije</a>
-            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Postavi Oglas</a>
-            <a href="#" class="block text-gray-600 hover:text-gray-900 p-2 rounded-md bg-gray-50">Kontakt</a>
-            <a href="#" class="block btn-primary text-center p-2 rounded-md">Prijava / Registracija</a>
-        </div>
-    </nav>
-
-    <!-- Hero Sekcija sa Pretragom -->
-    <header class="hero-section">
-        <div class="container mx-auto px-4">
-            <h1 class="text-5xl font-extrabold mb-4 leading-tight">Pronađite savršene usluge za vaše slavlje</h1>
-            <p class="text-xl mb-8 opacity-90">Ketering, rođendanionice, muzika, fotografi i još mnogo toga za nezaboravne događaje, sve na jednom mestu.</p>
-            <div class="max-w-3xl mx-auto bg-white p-2 rounded-lg shadow-lg flex items-center space-x-2">
-                <input type="text" placeholder="Pretražite usluge..." class="input-field flex-grow text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                <button class="btn-primary px-6 py-3">Pretraži</button>
+        <!-- Mobilni Meni (skriven po defaultu) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Početna</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Usluge</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Kako Radi</a>
+                <button class="w-full mt-2 px-3 py-2 text-base font-semibold text-grape-primary border border-grape-primary rounded-lg hover:bg-grape-primary hover:text-white transition duration-200">
+                    Prijavi se
+                </button>
+                <button class="w-full mt-2 px-3 py-2 text-base font-semibold text-white bg-grape-light rounded-lg shadow-lg hover:bg-grape-primary transition duration-200">
+                    Postavi Oglas
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Sekcija "Pregledaj Kategorije" -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Pregledaj Kategorije</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Muzički Izvođači -->
-                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Muzički Izvođači</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Bendovi</li>
-                        <li>DJ-evi</li>
-                        <li>Muzičari za venčanja</li>
-                        <li>i više...</li>
-                    </ul>
-                </div>
-                <!-- Zabavljači -->
-                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Zabavljači</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Dečiji animatori</li>
-                        <li>Komičari</li>
-                        <li>Plesači</li>
-                        <li>Mađioničari</li>
-                        <li>i više...</li>
-                    </ul>
-                </div>
-                <!-- Usluge za Događaje -->
-                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Usluge za Događaje</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Fotografi</li>
-                        <li>Iznajmljivanje opreme</li>
-                        <li>Usluge za venčanja</li>
-                        <li>Dekorateri</li>
-                        <li>Organizatori događaja</li>
-                        <li>i više...</li>
-                    </ul>
-                </div>
-                <!-- Rođendanionice i Prostori -->
-                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Rođendanionice i Prostori</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Prostori za proslave</li>
-                        <li>Dečije igraonice</li>
-                        <li>Sale za venčanja</li>
-                        <li>Restorani za događaje</li>
-                        <li>i više...</li>
-                    </ul>
-                </div>
-                <!-- Hrana i Piće -->
-                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Hrana i Piće</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Usluge keteringa</li>
-                        <li>Torte i kolači</li>
-                        <li>Pekari i poslastičari</li>
-                        <li>i više...</li>
-                    </ul>
-                </div>
-                <!-- Ostale Usluge -->
-                <div class="category-card bg-gray-50 p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-3">Ostale Usluge</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>Video snimatelji</li>
-                        <li>Šminkeri i frizeri</li>
-                        <li>Cvećari</li>
-                        <li>Prevoz za događaje</li>
-                        <li>Obezbeđenje</li>
-                        <li>i više...</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Hero Sekcija i Traka za Pretragu -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                Sve za Vašu <span class="text-grape-primary">savršenu proslavu</span> na jednom mestu
+            </h1>
+            <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                Lokacije, muzika, ketering, dekoracija — pronađite najbolje oglašivače i organizujte nezaboravno veselje u Srbiji.
+            </p>
         </div>
-    </section>
 
-    <!-- Sekcija "Kako Funkcioniše" -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12">Kako Funkcioniše</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 bg-white rounded-xl shadow-md border border-gray-200">
-                    <div class="text-5xl text-indigo-500 mb-4">🔍</div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">1. Pretražite</h3>
-                    <p class="text-gray-600">Pronađite usluge koje su vam potrebne koristeći našu pretragu ili kategorije.</p>
+        <!-- Traka za Pretragu -->
+        <div class="mt-10 max-w-4xl mx-auto bg-white p-4 rounded-xl shadow-2xl border border-gray-100">
+            <form class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <input type="text" placeholder="Šta tražite? (npr. 'Bend za svadbu', 'Restoran za rođendan')" class="flex-grow p-4 border border-gray-300 rounded-lg focus:ring-grape-primary focus:border-grape-primary shadow-sm" aria-label="Ključna reč za pretragu">
+                
+                <select class="p-4 border border-gray-300 rounded-lg focus:ring-grape-primary focus:border-grape-primary shadow-sm w-full md:w-56">
+                    <option value="">Svi gradovi</option>
+                    <option value="Beograd">Beograd</option>
+                    <option value="Novi Sad">Novi Sad</option>
+                    <option value="Niš">Niš</option>
+                    <option value="Kragujevac">Kragujevac</option>
+                    <option value="Subotica">Subotica</option>
+                    <option value="Ostalo">Ostalo...</option>
+                </select>
+
+                <button type="submit" class="p-4 text-white bg-grape-primary rounded-lg font-semibold hover:bg-grape-light transition duration-200 shadow-lg">
+                    Pretraži
+                </button>
+            </form>
+        </div>
+
+        <!-- Sekcija Popularne Kategorije -->
+        <section class="mt-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Popularne Usluge</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                
+                <!-- Kartica Lokacije -->
+                <div class="category-card" data-category="lokacije">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-grape-primary text-center cursor-pointer">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-grape-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <p class="font-semibold text-lg text-gray-800">Lokacije</p>
+                        <p class="text-sm text-gray-500">Sale, restorani, splavovi</p>
+                    </div>
                 </div>
-                <div class="p-6 bg-white rounded-xl shadow-md border border-gray-200">
-                    <div class="text-5xl text-indigo-500 mb-4">✉️</div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">2. Kontaktirajte</h3>
-                    <p class="text-gray-600">Pošaljite upit direktno pružaocima usluga i dobijte ponude.</p>
+
+                <!-- Kartica Muzika (Bendovi/DJ-evi) -->
+                <div class="category-card" data-category="muzika">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-grape-light text-center cursor-pointer">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-grape-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M10 4l-4 4-4-4M18 10v6M10 18v-6l4-2M18 16v-6M10 18v-6l4 2v4M5 16h4M5 20h4"></path></svg>
+                        <p class="font-semibold text-lg text-gray-800">Muzika</p>
+                        <p class="text-sm text-gray-500">Bendovi, DJ-evi, trubači</p>
+                    </div>
                 </div>
-                <div class="p-6 bg-white rounded-xl shadow-md border border-gray-200">
-                    <div class="text-5xl text-indigo-500 mb-4">🎉</div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">3. Proslavite</h3>
-                    <p class="text-gray-600">Uživajte u savršeno organizovanom događaju bez stresa!</p>
+                
+                <!-- Kartica Ketering -->
+                <div class="category-card" data-category="ketering">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-grape-accent text-center cursor-pointer">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-grape-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7h18l-3-5H6l-3 5z"></path></svg>
+                        <p class="font-semibold text-lg text-gray-800">Ketering</p>
+                        <p class="text-sm text-gray-500">Hrana i piće za goste</p>
+                    </div>
+                </div>
+                
+                <!-- Kartica Dekoracija -->
+                <div class="category-card" data-category="dekoracija">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-grape-primary text-center cursor-pointer">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-grape-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.524 0-1.04-.155-1.475-.43L12 8.455V21l8-4.596C20.892 16.092 21 15.795 21 15.546z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 16.5V20M14 16.5V20M4 16.5V20"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12V4M10 12V4M14 12V4M20 12V4"></path></svg>
+                        <p class="font-semibold text-lg text-gray-800">Dekoracija</p>
+                        <p class="text-sm text-gray-500">Baloni, cvetni aranžmani</p>
+                    </div>
+                </div>
+
+                <!-- Kartica Fotografija i Video -->
+                <div class="category-card" data-category="fotografija">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-grape-light text-center cursor-pointer">
+                        <svg class="w-10 h-10 mx-auto mb-3 text-grape-light" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.933a2 2 0 001.414-.586l.573-.573A2 2 0 0110.467 5H14a2 2 0 012 2v1h-4a3 3 0 00-3 3v3a3 3 0 003 3h4v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-10z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <p class="font-semibold text-lg text-gray-800">Foto & Video</p>
+                        <p class="text-sm text-gray-500">Zabeležite uspomene</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Sekcija Kako Radi (Call to Action) -->
+        <section class="mt-20 bg-grape-primary text-white p-10 sm:p-16 rounded-xl shadow-2xl">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Pronašli ste uslugu ili želite da je ponudite?</h2>
+                <p class="text-lg opacity-90 mb-8">
+                    <!-- PROMENA: Grape.rs promenjeno u grape.rs -->
+                    Bilo da planirate veliku svadbu ili mali rođendan, grape.rs vas spaja sa najboljima. A ako nudite usluge, ovo je pravo mesto da vas vide!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <button class="px-8 py-3 text-lg font-semibold text-grape-primary bg-grape-accent rounded-lg shadow-md hover:bg-white transition duration-200">
+                        Započni Pretragu
+                    </button>
+                    <button class="px-8 py-3 text-lg font-semibold text-white bg-grape-light rounded-lg shadow-md hover:bg-white hover:text-grape-primary transition duration-200 border border-white">
+                        Postavi Oglas Odmah
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Organizuj.rs. Sva prava zadržana.</p>
-            <div class="mt-4 space-x-4">
-                <a href="#" class="text-gray-400 hover:text-white">Politika Privatnosti</a>
-                <a href="#" class="text-gray-400 hover:text-white">Uslovi Korišćenja</a>
+    <footer class="mt-20 border-t border-gray-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <!-- PROMENA: Grape.rs promenjeno u grape.rs -->
+                    <h4 class="text-lg font-semibold text-grape-primary mb-3">grape.rs</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-grape-light">O nama</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Kontakt</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Često postavljana pitanja</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-grape-primary mb-3">Za Oglašivače</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-grape-light">Kreiranje profila</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Cenovnik</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Uslovi korišćenja</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-grape-primary mb-3">Kategorije</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-grape-light">Lokacije</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Muzika</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Ketering</a></li>
+                        <li><a href="#" class="hover:text-grape-light">Dekoracija</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-lg font-semibold text-grape-primary mb-3">Pratite nas</h4>
+                    <p class="text-sm text-gray-600">Budite u toku sa najnovijim ponudama.</p>
+                    <div class="flex space-x-4 mt-3">
+                        <!-- Ikone društvenih mreža (placeholder) -->
+                        <a href="#" class="text-gray-400 hover:text-grape-primary transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.773 1.915 4.852 4.852.058 1.267.07 1.647.07 4.85s-.012 3.584-.07 4.85c-.079 2.937-1.6 4.63-4.852 4.852-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.773-1.745-4.852-4.852-.058-1.267-.07-1.647-.07-4.85s.012-3.584.07-4.85c.079-2.937 1.6-4.85 4.852-4.852 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.376 0-3.722.012-5.088.073-4.43 0-6.42 1.957-6.526 6.526-.062 1.366-.073 1.712-.073 5.088s.011 3.722.073 5.088c.106 4.569 2.096 6.526 6.526 6.526 1.366.062 1.712.073 5.088.073s3.722-.011 5.088-.073c4.43-.106 6.42-2.057 6.526-6.526.062-1.366.073-1.712.073-5.088s-.011-3.722-.073-5.088c-.106-4.43-2.057-6.42-6.526-6.526-1.366-.062-1.712-.073-5.088-.073zm0 4.325c-4.496 0-8.15 3.654-8.15 8.15s3.654 8.15 8.15 8.15 8.15-3.654 8.15-8.15-3.654-8.15-8.15-8.15zm0 13.4a5.25 5.25 0 110-10.5 5.25 5.25 0 010 10.5z"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-grape-primary transition"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.35c0 .733.592 1.325 1.325 1.325h21.35c.733 0 1.325-.592 1.325-1.325v-21.35c0-.733-.592-1.325-1.325-1.325zM7.25 20.25h-3.5v-10.5h3.5v10.5zM5.5 8.25c-1.125 0-2.042-.917-2.042-2.042s.917-2.042 2.042-2.042 2.042.917 2.042 2.042c0 1.125-.917 2.042-2.042 2.042zM20.25 20.25h-3.5v-5.5c0-1.375-.5-2.25-1.688-2.25-1.031 0-1.687.75-1.687 2.25v5.5h-3.5v-10.5h3.5v1.5c.562-1.125 1.75-1.938 3.5-1.938 2.562 0 4.5 1.812 4.5 5.5v5.438z"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                <!-- PROMENA: Grape.rs promenjeno u grape.rs -->
+                <p class="text-sm text-gray-500">&copy; 2025 grape.rs. Sva prava zadržana.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript za Mobilni Meni -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
 
-            // Dodaje event listener za klik na hamburger dugme
-            mobileMenuButton.addEventListener('click', function() {
-                // Prebacuje 'hidden' klasu na mobilnom meniju
-                mobileMenu.classList.toggle('hidden');
+            button.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Logika za klik na kategorije (za demonstraciju)
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const category = card.getAttribute('data-category');
+                    // Ovde bi išla navigacija na odgovarajuću stranicu kategorije
+                    console.log('Kliknuta kategorija:', category);
+                    // Umesto console.log, u realnoj aplikaciji bi bilo: window.location.href = `/kategorija/${category}`;
+                    
+                    // Prikazivanje poruke umesto alert()
+                    const messageBox = document.createElement('div');
+                    messageBox.className = 'fixed top-4 right-4 bg-grape-primary text-white p-4 rounded-lg shadow-xl z-[1000] transition-opacity duration-300';
+                    messageBox.textContent = `Preusmeravanje na sekciju: ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+                    document.body.appendChild(messageBox);
+                    
+                    setTimeout(() => {
+                        messageBox.classList.add('opacity-0');
+                        setTimeout(() => messageBox.remove(), 300);
+                    }, 2000);
+                });
             });
         });
     </script>
-
 </body>
 </html>
